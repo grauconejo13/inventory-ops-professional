@@ -30,6 +30,13 @@ flowchart TD
 - **Update:** authorized users adjust quantity, condition, status, or location.
 - **Archive:** assets are archived rather than permanently deleted to preserve history.
 
+## Phase 7 backend foundation
+
+- **API:** Express REST API with `/api/auth`, `/api/assets`, and `/api/audit-events` endpoints.
+- **Database:** SQLite for a zero-setup local data foundation. Assets, users, and audit events are separate records; PostgreSQL can replace SQLite at deployment without changing the API contract.
+- **Authentication:** bcrypt password hashes and signed JWT sessions. Staff can create/update assets; only administrators can archive records.
+- **Integrity:** The native asset ID remains the primary key. An optional barcode/UPC is a separate, unique lookup value, never the record’s identity.
+
 ## Technology direction
 
-The application will use a React-based responsive front end. The API, database, authentication provider, and image storage service will be selected before the data-backed milestone.
+The React front end is ready to be connected to the Express API. Image storage is intentionally deferred until a hosted storage provider is selected.

@@ -16,4 +16,14 @@ A responsive inventory and equipment-management application for tracking assets,
 
 ## Status
 
-Planning and project foundation in progress.
+The portfolio demo is complete through browser-backed CRUD, audit history, barcode metadata, and image URLs. Phase 7 adds a local Express + SQLite backend foundation with authenticated API routes.
+
+## Run the API locally
+
+```bash
+npm install
+cp .env.example .env
+npm run dev:api
+```
+
+The API starts at `http://localhost:4000`. Create a staff account with `POST /api/auth/register`, then send its returned JWT as `Authorization: Bearer <token>` to use the inventory endpoints.

@@ -27,20 +27,27 @@ Each milestone must pass linting, build checks, and the relevant Playwright test
 - Archive confirmation and archived-items view.
 - Playwright tests for update and archive behavior.
 
-## 4. Data-backed CRUD
+## 4. Data-backed CRUD — complete (browser demo)
 
 - Select API, database, and authentication approach.
 - Persist assets, categories, locations, and audit events.
 - Add server and end-to-end test coverage.
 
-## 5. Images and scanning
+## 5. Images and scanning — complete (URL + code metadata)
 
 - Upload asset images.
 - Support a separate internal asset code plus optional UPC/barcode.
 - Add scanning and validation rules without confusing native IDs with UPCs.
 
-## 6. Polish and deployment
+## 6. Polish and deployment — pending
 
 - Accessibility review.
 - Empty, loading, and error states.
 - Production build, deployment, and final Playwright regression pass.
+
+## 7. Backend foundation — complete (local API)
+
+- Express API with SQLite persistence, seeded inventory, and an audit-event table.
+- Registration, login, signed sessions, and staff/admin authorization rules.
+- Authenticated asset CRUD contract and admin-only archive endpoint.
+- Environment-template and database exclusion rules for safe local development.
