@@ -27,3 +27,13 @@ npm run dev:api
 ```
 
 The API starts at `http://localhost:4000`. Create a staff account with `POST /api/auth/register`, then send its returned JWT as `Authorization: Bearer <token>` to use the inventory endpoints.
+
+## Run the connected workspace
+
+In a second terminal, keep `npm run dev:api` running. Then start the React app with:
+
+```bash
+VITE_API_URL=http://localhost:4000 npm run dev
+```
+
+Without `VITE_API_URL`, the portfolio preview remains in safe demo mode with browser-only data.

@@ -39,4 +39,4 @@ flowchart TD
 
 ## Technology direction
 
-The React front end is ready to be connected to the Express API. Image storage is intentionally deferred until a hosted storage provider is selected.
+The React front end can connect to the Express API through `VITE_API_URL`; without it, it deliberately remains in portfolio demo mode. Image storage is intentionally deferred until a hosted storage provider is selected.

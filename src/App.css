@@ -122,6 +122,42 @@ header span {
 header .create {
   margin-left: auto;
 }
+.session-control {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.session-control .create { margin-left: 0; }
+.mode {
+  border-radius: 999px;
+  padding: 5px 8px;
+  background: #ebeff0;
+  color: #65777c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .07em;
+}
+.mode.live { background: #daf5f1; color: #177069; }
+.plain-button, .notice button {
+  border: 0;
+  color: #33746e;
+  background: transparent;
+  font-weight: 700;
+}
+.notice {
+  border: 1px solid #c9e4e0;
+  border-radius: 8px;
+  background: #effaf8;
+  color: #426166;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+.notice.error { border-color: #efc7c7; background: #fff6f5; color: #8a4646; }
+.form-error { color: #9a3c3c; font-size: 13px; margin: 16px 0 0; }
+.auth-modal > p { color: #63757a; margin: 8px 0 0; }
+.auth-form { grid-template-columns: 1fr; }
 .intro {
   padding: 38px 0 25px;
 }

@@ -51,3 +51,10 @@ Each milestone must pass linting, build checks, and the relevant Playwright test
 - Registration, login, signed sessions, and staff/admin authorization rules.
 - Authenticated asset CRUD contract and admin-only archive endpoint.
 - Environment-template and database exclusion rules for safe local development.
+
+## 8. App/API integration and sign-in — complete
+
+- Session-based sign-in and registration interface for the connected workspace.
+- Authenticated asset and audit-log requests with a visible demo-mode fallback.
+- Loading, authorization, service-error, and retry states.
+- Role-aware archive control: the API and interface reserve archiving for administrators.
