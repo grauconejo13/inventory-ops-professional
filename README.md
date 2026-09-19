@@ -16,7 +16,7 @@ A responsive inventory and equipment-management application for tracking assets,
 
 ## Status
 
-The portfolio demo is complete through browser-backed CRUD, audit history, barcode metadata, and image URLs. Phase 7 adds a local Express + SQLite backend foundation with authenticated API routes.
+The portfolio demo now includes browser-backed CRUD, audit history, scan-ready identifiers, collision-safe barcode/native-ID resolution, and scan-driven quantity/location updates. The local Express + SQLite backend provides authenticated asset, audit, and scan routes.
 
 ## Run the API locally
 
@@ -37,3 +37,10 @@ VITE_API_URL=http://localhost:4000 npm run dev
 ```
 
 Without `VITE_API_URL`, the portfolio preview remains in safe demo mode with browser-only data.
+
+
+## Scan workflow
+
+With the live API enabled, sign in and use the scan panel to enter a native asset ID, UPC, EAN, QR value, or internal barcode. A lookup must resolve to exactly one asset before inventory can change. Staff can then apply an integer quantity adjustment, move the asset to another location, or do both in one audited operation.
+
+Fresh databases include demonstration identifiers such as `A1245582` and UPC `012345678905`. Existing local databases keep their current records; attach a barcode through the asset editor if needed.
