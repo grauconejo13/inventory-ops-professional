@@ -36,3 +36,33 @@ test('mobile inventory is usable', async ({ page }) => {
   await expect(page.getByRole('button', { name: /add asset/i })).toBeVisible()
   await expect(page.getByText('Cargo Trolley')).toBeVisible()
 })
+
+
+test('scan workflow resolves native IDs and barcodes before applying inventory changes', async ({ page }) => {
+  await page.goto('/')
+
+  await page.getByLabel('Scan identifier').fill('A1245582')
+  await page.getByRole('button', { name: 'Lookup' }).click()
+  await expect(page.getByText('MATCHED BY NATIVE ASSET ID')).toBeVisible()
+  await expect(page.locator('.scan-result').getByRole('heading', { name: 'Cargo Trolley' })).toBeVisible()
+
+  await page.getByLabel('Quantity adjustment').fill('2')
+  await page.getByLabel('Scan location').fill('Returns')
+  await page.getByRole('button', { name: 'Apply scanned update' }).click()
+  await expect(page.getByText(/current quantity 6/)).toBeVisible()
+  await expect(page.getByText(/A1245582 · Equipment · Returns/)).toBeVisible()
+
+  await page.getByLabel('Scan identifier').fill('012345678905')
+  await page.getByRole('button', { name: 'Lookup' }).click()
+  await expect(page.getByText('MATCHED BY SCANNABLE CODE')).toBeVisible()
+  await expect(page.getByText(/current quantity 6/)).toBeVisible()
+})
+
+test('asset editor rejects a barcode that collides with another native asset ID', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: /Cargo Trolley/ }).click()
+  await page.getByRole('button', { name: 'Edit' }).click()
+  await page.getByLabel('Scannable code').fill('A1245584')
+  await page.getByRole('button', { name: 'Save asset' }).click()
+  await expect(page.getByText(/Barcode collides with native asset ID A1245584/)).toBeVisible()
+})

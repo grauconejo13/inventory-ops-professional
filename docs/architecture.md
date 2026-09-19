@@ -40,3 +40,17 @@ flowchart TD
 ## Technology direction
 
 The React front end can connect to the Express API through `VITE_API_URL`; without it, it deliberately remains in portfolio demo mode. Image storage is intentionally deferred until a hosted storage provider is selected.
+
+
+## Scan and identifier workflow
+
+Scanning is an operational lookup layer, not a second asset identity system.
+
+- `POST /api/scans/resolve` accepts a scanner value and resolves it against the native asset ID namespace and the barcode/UPC namespace.
+- If the same value points at two different records, the API returns `409 IDENTIFIER_COLLISION` with candidates and performs no mutation.
+- `POST /api/scans/adjust` repeats the safe resolution, then applies an integer quantity delta and/or a location move.
+- Quantity cannot fall below zero.
+- Barcode writes are checked against both existing barcodes and native asset IDs. Native IDs are likewise checked against existing barcode values when new assets are created.
+- Successful scan mutations emit a `scan_adjusted` audit event that preserves the scanned identifier, match type, quantity transition, and location transition.
+
+This lets keyboard-wedge USB/Bluetooth scanners work with the same text field as manually entered IDs while preserving a clean distinction between the application's native record key and external product identifiers.
