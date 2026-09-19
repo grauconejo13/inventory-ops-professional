@@ -44,7 +44,7 @@ test('scan workflow resolves native IDs and barcodes before applying inventory c
   await page.getByLabel('Scan identifier').fill('A1245582')
   await page.getByRole('button', { name: 'Lookup' }).click()
   await expect(page.getByText('MATCHED BY NATIVE ASSET ID')).toBeVisible()
-  await expect(page.getByText(/Cargo Trolley/)).toBeVisible()
+  await expect(page.locator('.scan-result').getByRole('heading', { name: 'Cargo Trolley' })).toBeVisible()
 
   await page.getByLabel('Quantity adjustment').fill('2')
   await page.getByLabel('Scan location').fill('Returns')
@@ -60,7 +60,7 @@ test('scan workflow resolves native IDs and barcodes before applying inventory c
 
 test('asset editor rejects a barcode that collides with another native asset ID', async ({ page }) => {
   await page.goto('/')
-  await page.getByText('Cargo Trolley').click()
+  await page.getByRole('button', { name: /Cargo Trolley/ }).click()
   await page.getByRole('button', { name: 'Edit' }).click()
   await page.getByLabel('Scannable code').fill('A1245584')
   await page.getByRole('button', { name: 'Save asset' }).click()
