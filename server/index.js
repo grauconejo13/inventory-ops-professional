@@ -100,7 +100,7 @@ const lookupIdentifier = (rawIdentifier) => {
   return { identifier, matches };
 };
 
-const resolveIdentifier = (req, res, rawIdentifier) => {
+const resolveIdentifier = (res, rawIdentifier) => {
   const result = lookupIdentifier(rawIdentifier);
   if (!result.identifier) {
     res.status(400).json({ error: "A barcode, UPC, or native asset ID is required", code: "IDENTIFIER_REQUIRED" });
@@ -321,7 +321,7 @@ app.post("/api/assets/:id/archive", authenticate, allow("admin"), (req, res) => 
 });
 
 app.post("/api/scans/resolve", authenticate, (req, res) => {
-  const resolved = resolveIdentifier(req, res, req.body.identifier);
+  const resolved = resolveIdentifier(res, req.body.identifier);
   if (!resolved) return;
   return res.json({
     identifier: resolved.identifier,
@@ -332,7 +332,7 @@ app.post("/api/scans/resolve", authenticate, (req, res) => {
 
 app.post("/api/scans/adjust", authenticate, allow("admin", "staff"), (req, res, next) => {
   try {
-    const resolved = resolveIdentifier(req, res, req.body.identifier);
+    const resolved = resolveIdentifier(res, req.body.identifier);
     if (!resolved) return;
 
     const hasQuantityDelta = req.body.quantityDelta !== undefined && req.body.quantityDelta !== null && req.body.quantityDelta !== "";
