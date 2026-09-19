@@ -522,3 +522,203 @@ header .create {
     font-size: 36px;
   }
 }
+
+
+.scanner {
+  margin: 0 0 22px;
+  padding: 18px;
+  border: 1px solid #d5e3e4;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.scanner-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 15px;
+}
+
+.scanner-heading small,
+.scan-result small {
+  color: #31968e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.scanner-heading h2 {
+  margin: 4px 0;
+  font-family: "Playfair Display", Georgia, serif;
+  color: #1c2d33;
+  font-size: 24px;
+}
+
+.scanner-heading p,
+.scan-result p,
+.scan-collision p {
+  margin: 0;
+  color: #6d7d83;
+  font-size: 13px;
+}
+
+.scanner-badge {
+  flex: none;
+  border-radius: 999px;
+  padding: 6px 9px;
+  background: #eee8fb;
+  color: #654297;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .05em;
+}
+
+.scanner-lookup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+}
+
+.scanner-lookup label,
+.scan-adjustments label {
+  display: grid;
+  gap: 6px;
+  color: #4d6066;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.scanner-lookup input,
+.scan-adjustments input {
+  height: 42px;
+  width: 100%;
+  border: 1px solid #cad8d9;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.scanner button:disabled {
+  opacity: .58;
+  cursor: wait;
+}
+
+.scanner-error {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 7px;
+  background: #fff6f5;
+  color: #8a4646;
+  font-size: 13px;
+}
+
+.scan-result,
+.scan-collision {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.scan-result {
+  border: 1px solid #c9e4e0;
+  background: #f4fbfa;
+}
+
+.scan-result h3 {
+  margin: 4px 0;
+  color: #243a40;
+}
+
+.scan-adjustments {
+  display: grid;
+  grid-template-columns: 130px minmax(180px, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.scan-collision {
+  border: 1px solid #efc7c7;
+  background: #fff6f5;
+  color: #773d3d;
+}
+
+.scan-collision ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  font-size: 12px;
+}
+
+.audit {
+  margin-top: 22px;
+  padding: 18px;
+  border: 1px solid #dce8e9;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.audit small {
+  color: #31968e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.audit h2 {
+  margin: 4px 0 12px;
+  color: #1c2d33;
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+.audit ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.audit li {
+  padding: 7px 0;
+  color: #52666c;
+  font-size: 13px;
+}
+
+.audit time {
+  float: right;
+  color: #8a989c;
+  font-size: 11px;
+}
+
+.asset-photo {
+  width: 57px;
+  height: 57px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+@media (max-width: 700px) {
+  .scanner-heading {
+    display: block;
+  }
+
+  .scanner-badge {
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .scanner-lookup,
+  .scan-adjustments {
+    grid-template-columns: 1fr;
+  }
+
+  .scanner-lookup button,
+  .scan-adjustments button {
+    width: 100%;
+  }
+
+  .audit time {
+    display: block;
+    float: none;
+    margin-top: 2px;
+  }
+}
