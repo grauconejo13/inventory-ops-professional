@@ -58,3 +58,14 @@ Each milestone must pass linting, build checks, and the relevant Playwright test
 - Authenticated asset and audit-log requests with a visible demo-mode fallback.
 - Loading, authorization, service-error, and retry states.
 - Role-aware archive control: the API and interface reserve archiving for administrators.
+
+
+## 9. Scan and identifier operations — complete
+
+- Resolve native asset IDs and scannable codes through one authenticated scan endpoint.
+- Keep native IDs and UPC/barcodes as separate identifier namespaces and reject unsafe cross-namespace collisions.
+- Stop ambiguous scans with a 409 collision response and candidate list instead of guessing which asset to update.
+- Apply whole-number quantity adjustments and optional location moves from the scan workflow.
+- Reject changes that would drive inventory below zero.
+- Record every scan-based inventory mutation as a `scan_adjusted` audit event with the matched identifier, before/after quantity, and before/after location.
+- Provide the same workflow in portfolio demo mode with seeded scan-ready assets and Playwright coverage.
